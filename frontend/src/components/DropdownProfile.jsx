@@ -265,9 +265,9 @@ function DropdownProfile({ align }) {
                   className="w-full py-2 px-3 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-zinc-100 rounded-lg flex items-center justify-center gap-2.5 transition font-semibold text-sm cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <img
-                    width="18"
-                    height="18"
-                    src="https://img.icons8.com/color/48/google-logo.png"
+                    width="22"
+                    height="22"
+                    src="/google.png"
                     alt="google-logo"
                   />
                   {loading ? 'Signing in...' : 'Continue with Google'}

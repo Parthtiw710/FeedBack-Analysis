@@ -36,7 +36,7 @@ const codeSnippets = {
 
 declare global {
   interface Window {
-    AcmeFormWidget: {
+    FeedSenseWidget: {
       mountForm: (
         el: HTMLElement,
         formType: string,
@@ -46,21 +46,21 @@ declare global {
   }
 }
 
-export default function AcmeForm({
+export default function FeedSenseForm({
   formType, style
 }: { formType: string; style?: any }) {
   const ref = useRef(null)
 
   useEffect(() => {
     if (!ref.current) return
-    window.AcmeFormWidget?.mountForm(ref.current, formType, style)
+    window.FeedSenseWidget?.mountForm(ref.current, formType, style)
   }, [formType])
 
   return <div ref={ref} />
 }`,
-  reactUse: `<AcmeForm formType="nps" />
-<AcmeForm formType="supportTicket" />
-<AcmeForm formType="churnSurvey" />`,
+  reactUse: `<FeedSenseForm formType="nps" />
+<FeedSenseForm formType="supportTicket" />
+<FeedSenseForm formType="churnSurvey" />`,
   nextjs: `import Script from "next/script"
 
 export default function RootLayout({ children }) {
@@ -84,7 +84,7 @@ export default function RootLayout({ children }) {
 
 <!-- 3. Mount -->
 <script>
-  AcmeFormWidget.mountForm(
+  FeedSenseWidget.mountForm(
     document.getElementById("form-root"),
     "productFeedback"
   )
@@ -239,13 +239,13 @@ export function DocsView() {
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/15 backdrop-blur-md rounded-full text-xs font-semibold tracking-wide mb-4">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            Acme Form Widget Integration Guide
+            FeedSense Widget Integration Guide
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-3">
             Collect feedback. Let the system handle the rest.
           </h2>
           <p className="text-violet-100/90 text-sm md:text-base font-light leading-relaxed font-sans">
-            The Acme Form Widget is the entry collection layer of a full feedback intelligence pipeline. Embed in any stack with one script tag — responses flow automatically into the Node.js preprocessing engine and AI analysis agents.
+            The FeedSense Widget is the entry collection layer of a full feedback intelligence pipeline. Embed in any stack with one script tag — responses flow automatically into the Node.js preprocessing engine and AI analysis agents.
           </p>
         </div>
       </div>
@@ -302,7 +302,7 @@ export function DocsView() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 leading-relaxed font-sans">
                   Paste this tag just before your closing <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700/60 rounded text-xs font-mono">&lt;/body&gt;</code> tag. It loads the widget globally.
                 </p>
-                <div className="relative rounded-lg bg-slate-50 dark:bg-gray-950 p-4 font-mono text-xs text-slate-800 dark:text-violet-300 overflow-x-auto border border-gray-200 dark:border-gray-900">
+                <div className="relative rounded-lg bg-slate-50 dark:bg-slate-900/60 p-4 font-mono text-xs text-slate-800 dark:text-slate-100 overflow-x-auto border border-gray-200 dark:border-gray-700/60">
                   <button
                     onClick={() => handleCopy('script', codeSnippets.script)}
                     className="absolute top-2.5 right-2.5 px-2.5 py-1.5 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850 text-gray-650 dark:text-gray-300 rounded text-[10px] font-sans font-semibold transition border border-gray-200 dark:border-gray-800 flex items-center gap-1.5 shadow-sm"
@@ -319,7 +319,7 @@ export function DocsView() {
                       </>
                     )}
                   </button>
-                  <pre className="pr-16 text-slate-800 dark:text-violet-300">{codeSnippets.script}</pre>
+                  <pre className="pr-16 text-slate-800 dark:text-slate-100 font-semibold">{codeSnippets.script}</pre>
                 </div>
               </div>
 
@@ -334,9 +334,9 @@ export function DocsView() {
                 </p>
                 <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 font-mono flex items-center gap-1.5">
                   <FileText className="w-3.5 h-3.5 text-violet-500" />
-                  <span>src/components/AcmeForm.jsx</span>
+                  <span>src/components/FeedSenseForm.jsx</span>
                 </div>
-                <div className="relative rounded-lg bg-slate-50 dark:bg-gray-950 p-4 font-mono text-xs text-slate-800 dark:text-violet-300 overflow-x-auto border border-gray-200 dark:border-gray-900 max-h-96">
+                <div className="relative rounded-lg bg-slate-50 dark:bg-slate-900/60 p-4 font-mono text-xs text-slate-800 dark:text-slate-100 overflow-x-auto border border-gray-200 dark:border-gray-700/60 max-h-96">
                   <button
                     onClick={() => handleCopy('react', codeSnippets.react)}
                     className="absolute top-2.5 right-2.5 px-2.5 py-1.5 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850 text-gray-650 dark:text-gray-300 rounded text-[10px] font-sans font-semibold transition border border-gray-200 dark:border-gray-800 flex items-center gap-1.5 shadow-sm"
@@ -353,12 +353,12 @@ export function DocsView() {
                       </>
                     )}
                   </button>
-                  <pre className="pr-16 text-slate-800 dark:text-violet-300">{codeSnippets.react}</pre>
+                  <pre className="pr-16 text-slate-800 dark:text-slate-100 font-semibold">{codeSnippets.react}</pre>
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 mb-2 leading-relaxed font-sans">
                   Then mount the wrapper anywhere to load specific schemas:
                 </p>
-                <div className="relative rounded-lg bg-slate-50 dark:bg-gray-950 p-4 font-mono text-xs text-slate-800 dark:text-violet-300 overflow-x-auto border border-gray-200 dark:border-gray-900">
+                <div className="relative rounded-lg bg-slate-50 dark:bg-slate-900/60 p-4 font-mono text-xs text-slate-800 dark:text-slate-100 overflow-x-auto border border-gray-200 dark:border-gray-700/60">
                   <button
                     onClick={() => handleCopy('reactUse', codeSnippets.reactUse)}
                     className="absolute top-2.5 right-2.5 px-2.5 py-1.5 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850 text-gray-650 dark:text-gray-300 rounded text-[10px] font-sans font-semibold transition border border-gray-200 dark:border-gray-800 flex items-center gap-1.5 shadow-sm"
@@ -375,7 +375,7 @@ export function DocsView() {
                       </>
                     )}
                   </button>
-                  <pre className="pr-16 text-slate-800 dark:text-violet-300">{codeSnippets.reactUse}</pre>
+                  <pre className="pr-16 text-slate-800 dark:text-slate-100 font-semibold">{codeSnippets.reactUse}</pre>
                 </div>
               </div>
 
@@ -392,7 +392,7 @@ export function DocsView() {
                   <FileText className="w-3.5 h-3.5 text-violet-500" />
                   <span>app/layout.jsx</span>
                 </div>
-                <div className="relative rounded-lg bg-slate-50 dark:bg-gray-950 p-4 font-mono text-xs text-slate-800 dark:text-violet-300 overflow-x-auto border border-gray-200 dark:border-gray-900">
+                <div className="relative rounded-lg bg-slate-50 dark:bg-slate-900/60 p-4 font-mono text-xs text-slate-800 dark:text-slate-100 overflow-x-auto border border-gray-200 dark:border-gray-700/60">
                   <button
                     onClick={() => handleCopy('nextjs', codeSnippets.nextjs)}
                     className="absolute top-2.5 right-2.5 px-2.5 py-1.5 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850 text-gray-650 dark:text-gray-300 rounded text-[10px] font-sans font-semibold transition border border-gray-200 dark:border-gray-800 flex items-center gap-1.5 shadow-sm"
@@ -409,7 +409,7 @@ export function DocsView() {
                       </>
                     )}
                   </button>
-                  <pre className="pr-16 text-slate-800 dark:text-violet-300">{codeSnippets.nextjs}</pre>
+                  <pre className="pr-16 text-slate-800 dark:text-slate-100 font-semibold">{codeSnippets.nextjs}</pre>
                 </div>
               </div>
             </div>
@@ -425,7 +425,7 @@ export function DocsView() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 leading-relaxed font-sans">
                   Direct vanilla integration. Mount forms in static portals or templates.
                 </p>
-                <div className="relative rounded-lg bg-slate-50 dark:bg-gray-950 p-4 font-mono text-xs text-slate-800 dark:text-violet-300 overflow-x-auto border border-gray-200 dark:border-gray-900">
+                <div className="relative rounded-lg bg-slate-50 dark:bg-slate-900/60 p-4 font-mono text-xs text-slate-800 dark:text-slate-100 overflow-x-auto border border-gray-200 dark:border-gray-700/60">
                   <button
                     onClick={() => handleCopy('html', codeSnippets.html)}
                     className="absolute top-2.5 right-2.5 px-2.5 py-1.5 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-850 text-gray-650 dark:text-gray-300 rounded text-[10px] font-sans font-semibold transition border border-gray-200 dark:border-gray-800 flex items-center gap-1.5 shadow-sm"
@@ -442,7 +442,7 @@ export function DocsView() {
                       </>
                     )}
                   </button>
-                  <pre className="pr-16 text-slate-800 dark:text-violet-300">{codeSnippets.html}</pre>
+                  <pre className="pr-16 text-slate-800 dark:text-slate-100 font-semibold">{codeSnippets.html}</pre>
                 </div>
               </div>
 
