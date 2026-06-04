@@ -1,0 +1,146 @@
+export const FORM_MAP: Record<string, any> = {
+
+  nps: {
+    scorePrimary:   'score',
+    scoreSecondary: null,
+    scoreTertiary:  null,
+    category:       'segment',
+    subCategory:    'product_area',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['reason'],
+  },
+
+  csat: {
+    scorePrimary:   'satisfaction',
+    scoreSecondary: 'resolution_quality',
+    scoreTertiary:  'response_speed',
+    category:       'interaction_type',
+    subCategory:    null,
+    priority:       null,
+    booleanFlag:    'follow_up_ok',
+    freetext:       ['comment'],
+  },
+
+  ces: {
+    scorePrimary:   'effort',
+    scoreSecondary: null,
+    scoreTertiary:  null,
+    category:       'task',
+    subCategory:    'friction_point',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['comment'],
+  },
+
+  productFeedback: {
+    scorePrimary:   'overall_rating',
+    scoreSecondary: 'ease_of_use',
+    scoreTertiary:  'value_for_money',
+    category:       'area',
+    subCategory:    'would_recommend',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['biggest_pain', 'feature_request', 'best_aspect'],
+  },
+
+  supportTicket: {
+    scorePrimary:   null,
+    scoreSecondary: null,
+    scoreTertiary:  null,
+    category:       'category',
+    subCategory:    'impact_scope',
+    priority:       'priority',
+    booleanFlag:    null,
+    freetext:       ['issue_title', 'issue_description', 'steps_to_reproduce'],
+  },
+
+  bugReport: {
+    scorePrimary:   null,
+    scoreSecondary: null,
+    scoreTertiary:  null,
+    category:       'component',
+    subCategory:    'frequency',
+    priority:       'severity',
+    booleanFlag:    null,
+    freetext:       ['title', 'what_happened', 'expected_behaviour', 'steps'],
+  },
+
+  churnSurvey: {
+    scorePrimary:   'satisfaction_overall',
+    scoreSecondary: null,
+    scoreTertiary:  null,
+    category:       'primary_reason',
+    subCategory:    'would_return',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['prevention_comment', 'final_comment', 'missing_feature_detail', 'competitor_name'],
+  },
+
+  featureRequest: {
+    scorePrimary:   null,
+    scoreSecondary: null,
+    scoreTertiary:  null,
+    category:       'area',
+    subCategory:    'urgency',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['title', 'problem_statement', 'proposed_solution', 'business_impact'],
+  },
+
+  onboardingFeedback: {
+    scorePrimary:   'onboarding_rating',
+    scoreSecondary: 'setup_ease',
+    scoreTertiary:  null,
+    category:       'time_to_value',
+    subCategory:    'setup_blocker',
+    priority:       null,
+    booleanFlag:    'support_needed',
+    freetext:       ['biggest_confusion', 'biggest_win'],
+  },
+
+  winLoss: {
+    scorePrimary:   null,
+    scoreSecondary: null,
+    scoreTertiary:  null,
+    category:       'outcome',
+    subCategory:    'primary_reason',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['our_weaknesses', 'our_strengths', 'competitor_reason', 'competitor_chosen'],
+  },
+
+  betaFeedback: {
+    scorePrimary:   'usefulness',
+    scoreSecondary: 'usability',
+    scoreTertiary:  null,
+    category:       'met_expectations',
+    subCategory:    'bugs_found',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['overall_impression', 'missing_piece', 'bug_description'],
+  },
+
+  developerExperience: {
+    scorePrimary:   'dx_overall',
+    scoreSecondary: 'docs_quality',
+    scoreTertiary:  'api_design',
+    category:       'biggest_dx_pain',
+    subCategory:    'language',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['docs_feedback', 'missing_endpoint'],
+  },
+
+  pricingFeedback: {
+    scorePrimary:   null,
+    scoreSecondary: null,
+    scoreTertiary:  null,
+    category:       'value_perception',
+    subCategory:    'pricing_model_preference',
+    priority:       null,
+    booleanFlag:    null,
+    freetext:       ['pricing_comment'],
+    numericFields:  ['too_expensive_at', 'great_value_at'],
+  },
+};

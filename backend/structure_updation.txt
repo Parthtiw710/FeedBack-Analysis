@@ -1,0 +1,22 @@
+1. feedbacks older than 30 days or 500 converted
+   into json files and stored inot S3 bucket with client_id
+   and then using AWS Athena to direct use sql queries on S3 
+   stored JSON.
+
+ 
+{
+    SELECT *
+    FROM feedback f
+    WHERE client_id = 123
+    AND (
+    f.created_at < NOW() - INTERVAL '30 days'
+    )
+    AND f.id NOT IN (
+    SELECT id
+    FROM feedback
+    WHERE client_id = 123
+    ORDER BY created_at DESC
+    LIMIT 500
+    );
+}
+
