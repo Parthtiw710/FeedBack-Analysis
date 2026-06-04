@@ -13,17 +13,7 @@ export default defineConfig({
     }
   },
   server: {
-    port: 3000,
-    proxy: {
-      '/server-submissions': 'http://localhost:4000',
-      '/server-raw-submissions': 'http://localhost:4000',
-      '/server-analytics': 'http://localhost:4000',
-      '/server-insights': 'http://localhost:4000',
-      '/server-auth': 'http://localhost:4000',
-      '/server-api-keys': 'http://localhost:4000',
-      '/server-forms': 'http://localhost:4000',
-      '/server-submit': 'http://localhost:4000',
-    }
+    port: 3000
   }
 })
 

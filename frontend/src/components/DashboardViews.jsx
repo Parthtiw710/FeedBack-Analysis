@@ -1258,6 +1258,8 @@ export function InsightsView() {
   const [generating, setGenerating] = useState(false);
   const [toastMsg, setToastMsg] = useState(null);
 
+  const isTestClient = !localStorage.getItem('token');
+
   const fetchInsights = async (force = false) => {
     setLoading(true);
     try {
@@ -1302,12 +1304,17 @@ export function InsightsView() {
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
         <div>
           <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100">AI-Generated Insights</h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Deep text analysis insights triggered by Google Gemini API.</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Deep text analysis insights.</p>
         </div>
         <button
           onClick={triggerInsights}
-          disabled={generating}
-          className="mt-3 sm:mt-0 flex items-center justify-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-700 disabled:bg-violet-400 text-white text-xs font-bold rounded-lg shadow-sm transition"
+          disabled={generating || isTestClient}
+          className={`mt-3 sm:mt-0 flex items-center justify-center gap-2 px-4 py-2 text-white text-xs font-bold rounded-lg shadow-sm transition ${
+            isTestClient
+              ? "bg-gray-300 dark:bg-gray-800 text-gray-500 dark:text-gray-500 cursor-not-allowed border border-gray-200 dark:border-gray-700/60"
+              : "bg-violet-600 hover:bg-violet-700 disabled:bg-violet-400 cursor-pointer"
+          }`}
+          title={isTestClient ? "AI insight generation is disabled in the simulated test environment" : "Generate AI Insights"}
         >
           {generating ? (
             <>
@@ -1316,10 +1323,10 @@ export function InsightsView() {
             </>
           ) : (
             <>
-              <svg className="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C8.29 12.42 7 10.78 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.78-1.29 3.42-3.15 4.1z" />
               </svg>
-              Generate AI Insights
+              {isTestClient ? "Disabled in Test Env" : "Generate AI Insights"}
             </>
           )}
         </button>
