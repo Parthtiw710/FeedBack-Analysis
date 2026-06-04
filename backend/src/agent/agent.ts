@@ -45,6 +45,8 @@ export const rootAgent = new LlmAgent({
   // Pass the schema through zodObjectToSchema so ADK converts it to a proper
   // Gemini-compatible JSON schema for controlled generation (not raw Zod)
   outputSchema: zodObjectToSchema(InsightOutputSchema),
+  disallowTransferToParent: true,
+  disallowTransferToPeers: true,
   instruction: `
     You are a professional analyst analyzing form submission data.
     Extract client_id from the user message (format: "Generate a report for client_id: N").

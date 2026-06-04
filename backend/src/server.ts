@@ -22,7 +22,7 @@ if (instanceId === '0' || instanceId.endsWith('-0')) {
    START
    ===================================================== */
 
-const PORT = 4000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`✅ Server on http://localhost:${PORT}`);
   // Auto-catchup: reprocess any submissions that are missing from processed_submissions

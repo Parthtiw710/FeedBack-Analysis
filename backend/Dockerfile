@@ -1,13 +1,20 @@
-FROM node:24-slim
-
+# Stage 1: Build
+FROM node:24-slim AS builder
 WORKDIR /app
-
 COPY package*.json ./
-
-RUN npm install --production
-
+RUN npm install
 COPY . .
+RUN npm run build
 
-EXPOSE 4000
+# Stage 2: Run
+FROM node:24-slim
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --production
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/public ./public
 
-CMD ["node", "server.js"]
+EXPOSE 8080
+ENV PORT=8080
+
+CMD ["node", "dist/server.js"]

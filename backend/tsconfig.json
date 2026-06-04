@@ -4,7 +4,7 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "outDir": "./dist",
-    "rootDir": "backend/src",
+    "rootDir": "src",
     "strict": false,
     "noImplicitAny": false,
     "esModuleInterop": true,
@@ -12,6 +12,6 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "backend/src/**/*"
+    "src/**/*"
   ]
 }

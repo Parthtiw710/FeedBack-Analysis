@@ -48,6 +48,10 @@ insightsRouter.get('/server-insights/latest', async (req: AuthenticatedRequest, 
 // POST /insights/trigger — run daily batch for all clients (admin/dev trigger)
 insightsRouter.post('/server-insights/trigger', async (req: AuthenticatedRequest, res: Response) => {
   try {
+    const clientId = req.user?.id;
+    if (clientId === 1) {
+      return res.status(403).json({ error: 'AI analysis generation is disabled for the Test Client profile.' });
+    }
     const result = await runDailyBatch(pool);
     res.json({ success: true, ...result });
   } catch (err: any) {
@@ -61,6 +65,9 @@ insightsRouter.post('/server-insights/generate', async (req: AuthenticatedReques
     const clientId = req.user?.id;
     if (!clientId) {
       return res.status(401).json({ error: 'Client ID not resolved' });
+    }
+    if (clientId === 1) {
+      return res.status(403).json({ error: 'AI analysis generation is disabled for the Test Client profile.' });
     }
     const result = await runAgentInsights(clientId);
     res.json({ success: true, clientId, ...result });
