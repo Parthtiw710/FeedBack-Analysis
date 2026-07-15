@@ -1,1 +1,0 @@
-# Keep this folder tracked by git even if it is empty so Docker builder doesn't fail.
